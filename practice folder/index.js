@@ -412,6 +412,22 @@
         //  Promise.all([p1, p2, p3]).then((result)=>{
         //     console.log(result)
         //  }).catch((err)=>{
-        //     console.error('promise.all rejections:',err)
+        //     console.error('all rejections:',err)
         //  })
-        
+       
+        import fetch from 'node-fetch';
+        const url = 'https://jsonplaceholder.typicode.com/posts/1'
+        fetch (url).then(isStatus200).then(getPost.json).then(json=>console.log(json)).catch(err=>console.error)
+
+        function isStatus200(res){
+            if(res.status===200){
+return res;
+            }else{
+                let err = new Error(res.statusText)
+                err.response = res
+                throw err;
+            }
+        }
+        function getPostJson(res){
+            return res.json()
+        }
