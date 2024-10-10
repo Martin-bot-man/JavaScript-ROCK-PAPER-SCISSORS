@@ -328,26 +328,90 @@
 // displayPerson(person1)
 
 
-async function getUserCountry(){
+// async function getUserCountry(){
 
-    const username = document.getElementById('usernameGet').value;
+//     const username = document.getElementById('usernameGet').value;
 
-    if(!username){
-        alert("please enter a username");
-        return;
-    }
-    const endpoint = new URL(`http://localhost:3000/users/${username}/country`);
-endpoint.searchParams.set(`token`,`YOUR_TOKEN_HERE`)
-console.log(endpoint.toString());
-const response = await fetch(endpoint,{
-    headers:{
-        'Authorization':"YOUR_TOKEN HERE"
-    }
-})
-if (response.status=== 404){
-    alert("username not found")
-}
-const data = await response.json();
-//down here
-console.log(response)
-}
+//     if(!username){
+//         alert("please enter a username");
+//         return;
+//     }
+//     const endpoint = new URL(`http://localhost:3000/users/${username}/country`);
+// endpoint.searchParams.set(`token`,`YOUR_TOKEN_HERE`)
+// console.log(endpoint.toString());
+// const response = await fetch(endpoint,{
+//     headers:{
+//         'Authorization':"YOUR_TOKEN HERE"
+//     }
+// })
+// if (response.status=== 404){
+//     alert("username not found")
+// }
+// const data = await response.json();
+// //down here
+// console.log(response)
+// }
+//promises
+
+//  let allgood = true;
+//  //define a promise
+// //  a promise can be in 1 of the three states pending,fulfilled ,resolved. rejected
+// let FetchSomeData = new promise((resolve, reject) => {
+//     if(!allgood){
+//        reject("error fetching data");
+//     }
+//     else{
+//         resolve({id:1,
+//             message:"nice work"
+//         });
+       
+//     }
+// });
+// // consuming a promise
+// FetchSomeData.then(fetchData=>{
+//     console.log(`then:`,fetchData)
+// }).catch(error=>{console.error(`error:`,err)})
+
+// let fetchData =(data)=>{
+//     return new Promise((resolve, reject)=>{
+//         setTimeout(()=>{
+// console.log("Processing data complete");
+// resolve({id:1, message:"nice work"})
+//         },2000 )
+//     })
+// }
+// let parseData = (data)=>{
+// return new Promise((resolve, reject)=>{
+//     setTimeout(()=>{
+// let parsedOutput = `parse the data for id: ${data.id} with message :${data.message}`;
+// resolve({parsed:parsedOutput})
+//     },2000 )
+// })
+// }
+// let echoData = (data)=>{
+// return new Promise((resolve, reject)=>{
+//     setTimeout(()=>{
+// console.log(data.parsed)
+//     },2000 )
+// })
+// }
+// //chaining the promises
+// fetchData()
+//          .then(parseData)
+//          .then(echoData)
+//          .catch(error =>console.error("an error occurred"));
+
+
+        //  const p1 = new Promise((resolve, reject)=>{
+        //     setTimeout(resolve, 500 ,'hello' );
+        //  });
+        //  const p2 = new Promise((resolve, reject)=>{
+        //     setTimeout(resolve, 2000,'world');
+        //  });
+        //  const p3 = 1000;
+        //  Promise.all([p1, p2, p3]).then((result)=>{
+        //     console.log(result)
+        //  }).catch((err)=>{
+        //     console.error('promise.all rejections:',err)
+        //  })
+        
