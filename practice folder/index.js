@@ -231,13 +231,123 @@
 
 // fetch will request data from another place on the web for example
 
-const users = fetch("https://JSONplaceholder.typicode.com/users")
-//pending state of the promise
-console.log(users);
-fetch("https://JSONplaceholder.typicode.com/users")
-    .then(response=>{
-        return response.json();
-    })
-    then(data=>{
-        console.log()
-    })
+// const users = fetch("https://JSONplaceholder.typicode.com/users")
+// //pending state of the promise
+// console.log(users);
+// fetch("https://JSONplaceholder.typicode.com/users")
+//     .then(response=>{
+//         return response.json();
+//     })
+//     .then(data=>{
+//         console.log(data)
+//         data.forEach(user=>{
+//             console.log(user)
+//         })
+//     })
+
+//     //async/await
+//     const myUsers = {
+//         userList:[]
+//     }
+// const myCoolFunction = async()=>{
+//   const response = await fetch("https://JSONplaceholder.typicode.com/users")
+//   const jsonUserData = await response.json();
+//   console.log(jsonUserData)
+//   return jsonUserData;
+// }
+// myCoolFunction()
+// const anotherFunction = async ()=>{
+//   const data = await myCoolFunction()
+//   console.log(data);
+//   myUser.userlist = data;
+// }
+// anotherFunction()
+// console.log(myUser.userList)
+//work flow function
+// const getAllUserEmails = async() => {
+//     const response = await fetch("https://JSONplaceholder.typicode.com/users")
+//     const jsonUserData = await response.json();
+
+//     const emailUserArray = jsonUserData.map(user =>{
+//         return user.Email
+//     })
+//     console.log(emailUserArray)
+// }
+//array destructuring in javascript
+// let a = 1 ;
+// let b = 2 ;
+// [a,b]= [b,a]
+// console.log(a)
+// console.l0g(b)   
+// const colors =['red','green','blue','black','white'];
+// // [colors[0], colors[4]]= [colors[4],colors[0]];
+// // console.log(colors)
+// const[firstColor,secondColor,thirdColor,...extraColors] = colors
+// console.log(firstColor)
+// console.log(secondColor)
+// console.log(thirdColor)
+// console.log(extraColors)
+// //extract values from objects
+
+// const person1= {
+//     firstName:'spongeBob',
+//     secondName:'squidgame',
+//     age:30,
+//     job:'cook'
+// }
+// const person2 = {
+//     firstName:'Martin',
+//     secondName:'Owino',
+//     age:26,
+// }
+
+// const{firstName, secondName,age,job}= person1
+// console.log(firstName);
+// console.log(secondName);
+
+// const{firstName,secondName,age, job}= person2;
+// console.log(person2);
+
+// function displayPerson ({firstName,secondName,age,job= "se"}){
+// console.log(`name :${firstName},${secondName}`);
+// console.log(`age: ${age}`)
+// console.log(`job :${job}`)
+// }
+
+// const person1= {
+//     firstName:'spongeBob',
+//     secondName:'squidgame',
+//     age:30,
+//     job:'cook'
+// }
+// const person2 = {
+//     firstName:'Martin',
+//     secondName:'Owino',
+//     age:26,
+// }
+// displayPerson(person1)
+
+
+async function getUserCountry(){
+
+    const username = document.getElementById('usernameGet').value;
+
+    if(!username){
+        alert("please enter a username");
+        return;
+    }
+    const endpoint = new URL(`http://localhost:3000/users/${username}/country`);
+endpoint.searchParams.set(`token`,`YOUR_TOKEN_HERE`)
+console.log(endpoint.toString());
+const response = await fetch(endpoint,{
+    headers:{
+        'Authorization':"YOUR_TOKEN HERE"
+    }
+})
+if (response.status=== 404){
+    alert("username not found")
+}
+const data = await response.json();
+//down here
+console.log(response)
+}
